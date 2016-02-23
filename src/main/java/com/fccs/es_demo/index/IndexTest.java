@@ -39,7 +39,7 @@ public class IndexTest {
 	public void createIndexTest2() throws Exception {
 		long start = System.currentTimeMillis();
 		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
-		for (int i = 10; i < 20; i++) {
+		for (int i = 10; i < 200; i++) {
             IndexResponse response = client.prepareIndex("missxu", "user", ""+(i+101))
             		.setSource(XContentFactory.jsonBuilder()
             				.startObject()

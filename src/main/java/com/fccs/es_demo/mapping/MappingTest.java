@@ -43,15 +43,14 @@ public class MappingTest {
 			.startObject()  
 	        	.startObject("user")
 		        	.startObject("properties")         
-			        	.startObject("name").field("type", "string").field("analyzer", "ik").endObject()    
-			            .startObject("age").field("type", "integer").field("analyzer", "ik").endObject()  
+			        	.startObject("name").field("type", "string").field("analyzer", "ik").endObject() 
+			            .startObject("age").field("type", "integer").field("analyzer", "ik").endObject()
 			            .startObject("birthday1").field("type", "date").field("analyzer", "ik").endObject()                  
 			        .endObject()  
 	          .endObject()  
 	     .endObject();
 		PutMappingRequest mappingRequest = Requests.putMappingRequest("missxu").type("user").source(mapping);
 		client.admin().indices().putMapping(mappingRequest).actionGet();
-		
 	}
 	
 }

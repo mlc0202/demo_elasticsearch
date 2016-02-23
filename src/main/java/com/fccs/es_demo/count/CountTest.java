@@ -13,7 +13,7 @@ public class CountTest {
 	public void countTest() {
 		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
 		CountResponse response = client.prepareCount("missxu")
-					.setQuery(QueryBuilders.matchQuery("name", "姓名"))
+//					.setQuery(QueryBuilders.matchQuery("name", "姓名"))
 					.get();
 		System.out.println("count："+response.getCount());
 	}

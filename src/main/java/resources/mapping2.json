@@ -1,0 +1,562 @@
+{
+    "songs": {
+        "properties": {
+            "singers": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "index": "not_analyzed",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            },
+            "artist_name": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "index": "not_analyzed",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            },
+            "album_name": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "index": "not_analyzed",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            },
+            "song_name": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "index": "not_analyzed",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            },
+            "play_count": {
+                "index": "no",
+                "type": "long"
+            }
+        }
+    },
+    "context": {
+        "properties": {
+            "keyword": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "index": "not_analyzed",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            },
+            "type": {
+                "index": "no",
+                "type": "string"
+            }
+        }
+    },
+    "xmly_track": {
+        "properties": {
+            "album_intro": {
+                "index": "no",
+                "type": "string"
+            },
+            "category_title": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            },
+            "sub_category": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            },
+            "favorites_count": {
+                "index": "no",
+                "type": "long"
+            },
+            "track_id": {
+                "index": "no",
+                "type": "long"
+            },
+            "nick_name": {
+                "index": "no",
+                "type": "string"
+            },
+            "track_title": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            },
+            "album_tags": {
+                "index": "no",
+                "type": "string"
+            },
+            "plays_count": {
+                "index": "no",
+                "type": "long"
+            },
+            "album_id": {
+                "index": "no",
+                "type": "long"
+            },
+            "album_title": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+    "albums": {
+        "properties": {
+            "singers": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "index": "not_analyzed",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            },
+            "artist_name": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "index": "not_analyzed",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            },
+            "album_name": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "index": "not_analyzed",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            },
+            "song_name": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "index": "not_analyzed",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            },
+            "play_count": {
+                "index": "no",
+                "type": "long"
+            }
+        }
+    },
+    "baidu_songs": {
+        "properties": {
+            "singers": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "index": "not_analyzed",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            },
+            "artist_name": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "index": "not_analyzed",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            },
+            "album_name": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "index": "not_analyzed",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            },
+            "song_name": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "index": "not_analyzed",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            },
+            "play_count": {
+                "index": "no",
+                "type": "long"
+            }
+        }
+    },
+    "singers": {
+        "properties": {
+            "singers": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "index": "not_analyzed",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            },
+            "artist_name": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "index": "not_analyzed",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            },
+            "album_name": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "index": "not_analyzed",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            },
+            "song_name": {
+                "type": "string",
+                "fields": {
+                    "max": {
+                        "analyzer": "ik_max_word",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "index": "not_analyzed",
+                        "type": "string"
+                    },
+                    "english": {
+                        "analyzer": "english",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    },
+                    "smart": {
+                        "analyzer": "ik_smart",
+                        "term_vector": "with_positions_offsets",
+                        "type": "string"
+                    }
+                }
+            },
+            "play_count": {
+                "index": "no",
+                "type": "long"
+            }
+        }
+    }
+}

@@ -82,6 +82,26 @@ public class SearchTest {
 		}
 	}
 	
+	/* 
+	 * 查询指定列
+	 */
+	@Test
+	public void searchTestByColumns() throws ElasticsearchException, ParseException {
+		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
+		SearchResponse response = client.prepareSearch("missxu")
+			.setTypes("user")
+			.setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
+			.setQuery(QueryBuilders.matchQuery("name", "我的姓名"))
+			.addSort(SortBuilders.fieldSort("name").order(SortOrder.ASC))
+			.setFrom(0).setSize(60).setExplain(true).get();
+		SearchHits hits = response.getHits();
+		System.out.println(hits.getTotalHits());
+		for (int i = 0; i < hits.getHits().length; i++) {
+			System.out.println(hits.getHits()[i].getSourceAsString());
+		}
+	}
+	
+	
 	@Test
 	public void scrollSearchTest() {
 		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
