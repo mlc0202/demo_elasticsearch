@@ -17,7 +17,7 @@ public class MatchQueryTest {
 
 	@Test
 	public void matchQueryTest() throws ElasticsearchException, ParseException {
-		Client client = ClientTemplate.getInstance("127.0.0.1", 9300);
+		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
 		SearchResponse response = client.prepareSearch("missxu")
 			.setTypes("user")
 			.setSearchType(SearchType.DFS_QUERY_THEN_FETCH)

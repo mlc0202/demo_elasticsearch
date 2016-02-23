@@ -18,7 +18,7 @@ public class DeleteByQueryTest {
 
 	@Test
 	public void deleteByQueryTest() {
-		Client client = ClientTemplate.getInstance("127.0.0.1", 9300);
+		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
 		QueryBuilder qb = QueryBuilders.matchPhraseQuery("name", "姓名");
 		SearchResponse scrollResp = client.prepareSearch("missxu")
 		        .setSearchType(SearchType.SCAN)

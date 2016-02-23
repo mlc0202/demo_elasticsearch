@@ -13,7 +13,7 @@ public class GetTest {
 	@Test
 	public void getOneTest1() {
 		long start = System.currentTimeMillis();
-		Client client = ClientTemplate.getInstance("127.0.0.1", 9300);
+		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
         GetResponse response = client.prepareGet("missxu", "user", "16").get();
         System.out.println("index: "+response.getIndex()+" type: "+response.getType()+" id: "+response.getId() + " exists: "+response.isExists());
 		ClientTemplate.close(client);
@@ -24,7 +24,7 @@ public class GetTest {
 	@Test
 	public void getOneTest2() {
 		long start = System.currentTimeMillis();
-		Client client = ClientTemplate.getInstance("127.0.0.1", 9300);
+		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
 		GetRequest request = new GetRequest("missxu", "user", "16");
 		GetResponse response = client.get(request).actionGet();
         System.out.println("index: "+response.getIndex()+" type: "+response.getType()+" id: "+response.getId() + " exists: "+response.isExists());

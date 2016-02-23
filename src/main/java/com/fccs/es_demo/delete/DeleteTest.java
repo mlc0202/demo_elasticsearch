@@ -15,7 +15,7 @@ public class DeleteTest {
 	@Test
 	public void deleteOneTest1() {
 		long start = System.currentTimeMillis();
-		Client client = ClientTemplate.getInstance("127.0.0.1", 9300);
+		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
         DeleteResponse response = client.prepareDelete("missxu", "user", "2").get();
         System.out.println("index: "+response.getIndex()+" type: "+response.getType()+" id: "+response.getId() + " founded: "+response.isFound());
 		ClientTemplate.close(client);
@@ -26,7 +26,7 @@ public class DeleteTest {
 	@Test
 	public void deleteOneTest2() {
 		long start = System.currentTimeMillis();
-		Client client = ClientTemplate.getInstance("127.0.0.1", 9300);
+		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
 		DeleteRequest request = new DeleteRequest("missxu", "user", "23");
 		DeleteResponse response = client.delete(request).actionGet();
         System.out.println("index: "+response.getIndex()+" type: "+response.getType()+" id: "+response.getId() + " founded: "+response.isFound());

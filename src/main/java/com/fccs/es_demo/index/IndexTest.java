@@ -18,7 +18,7 @@ public class IndexTest {
 	@Test
 	public void createIndexTest1() throws Exception {
 		long start = System.currentTimeMillis();
-		Client client = ClientTemplate.getInstance("127.0.0.1", 9300);
+		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
 		ObjectMapper mapper = new ObjectMapper();
 		for (int i = 0; i < 100; i++) {
             User user = new User();
@@ -38,12 +38,12 @@ public class IndexTest {
 	@Test
 	public void createIndexTest2() throws Exception {
 		long start = System.currentTimeMillis();
-		Client client = ClientTemplate.getInstance("127.0.0.1", 9300);
+		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
 		for (int i = 10; i < 20; i++) {
             IndexResponse response = client.prepareIndex("missxu", "user", ""+(i+101))
             		.setSource(XContentFactory.jsonBuilder()
             				.startObject()
-            				.field("name", "xingming：" + i)
+            				.field("name", "姓名：" + i)
             				.field("age", i % 10)
             				.field("birthday1", new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis() + 365*24*60*60*1000*i)))
             				.endObject())
@@ -55,4 +55,23 @@ public class IndexTest {
 		System.out.println("创建索引花费时间：" + (end-start) +"ms");
 	}
 	
+	@Test
+	public void createIndexTest3() throws Exception {
+		long start = System.currentTimeMillis();
+		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
+		for (int i = 10; i < 20; i++) {
+            IndexResponse response = client.prepareIndex("missxu", "user", ""+(i+101))
+            		.setSource(XContentFactory.jsonBuilder()
+            				.startObject()
+            				.field("title", "姓名：" + i)
+            				.field("type", i % 10)
+            				.field("createDate", new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis() + 365*24*60*60*1000*i)))
+            				.endObject())
+                    .execute().actionGet();
+            System.out.println("index: "+response.getIndex()+" type: "+response.getType()+" id: "+response.getId() + " created: "+response.isCreated());
+        }
+		ClientTemplate.close(client);
+		long end = System.currentTimeMillis();
+		System.out.println("创建索引花费时间：" + (end-start) +"ms");
+	}
 }

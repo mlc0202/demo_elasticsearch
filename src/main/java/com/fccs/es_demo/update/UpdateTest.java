@@ -21,7 +21,7 @@ public class UpdateTest {
 	@Test
 	public void updateOneTest1() throws IOException, InterruptedException, ExecutionException {
 		long start = System.currentTimeMillis();
-		Client client = ClientTemplate.getInstance("127.0.0.1", 9300);
+		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
 		UpdateRequest response = new UpdateRequest();
 		response.index("missxu");
 		response.type("user");
@@ -37,7 +37,7 @@ public class UpdateTest {
 	@Test
 	public void updateOneTest2() throws ElasticsearchException, IOException {
 		long start = System.currentTimeMillis();
-		Client client = ClientTemplate.getInstance("127.0.0.1", 9300);
+		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
 		UpdateResponse response = client.prepareUpdate("missxu", "user", "28")
 			.setDoc(XContentFactory.jsonBuilder().startObject().field("name", "姓名：又改又改").endObject())
 			.get();
@@ -55,7 +55,7 @@ public class UpdateTest {
 	@Test
 	public void upertTest() throws ElasticsearchException, IOException, InterruptedException, ExecutionException {
 		long start = System.currentTimeMillis();
-		Client client = ClientTemplate.getInstance("127.0.0.1", 9300);
+		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
 		IndexRequest indexRequest = new IndexRequest("missxu", "user", "16")
 		        .source(XContentFactory.jsonBuilder()
 		            .startObject()

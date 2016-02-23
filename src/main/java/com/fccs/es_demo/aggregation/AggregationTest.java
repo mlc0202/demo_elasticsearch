@@ -22,7 +22,7 @@ public class AggregationTest {
 
 	@Test
 	public void minMaxAvgSumCountStateTest() {
-		Client client = ClientTemplate.getInstance("127.0.0.1", 9300);
+		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
 		SearchResponse response = client.prepareSearch("missxu")
 		        .setQuery(QueryBuilders.matchPhraseQuery("name", "姓名"))
 		        .addAggregation(AggregationBuilders.min("min_age").field("age"))

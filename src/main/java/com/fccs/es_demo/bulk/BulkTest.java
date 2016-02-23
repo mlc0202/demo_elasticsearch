@@ -21,7 +21,7 @@ public class BulkTest {
 	@Test
 	public void bulkTest() throws IOException {
 		long start = System.currentTimeMillis();
-		Client client = ClientTemplate.getInstance("127.0.0.1", 9300);
+		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
 		BulkRequestBuilder bulkRequest = client.prepareBulk();
 		bulkRequest.add(new DeleteRequest("missxu", "user", "1"));
 		bulkRequest.add(new IndexRequest("missxu", "user", "3")

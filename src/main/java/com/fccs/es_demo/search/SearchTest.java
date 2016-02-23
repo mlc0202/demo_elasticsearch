@@ -1,6 +1,8 @@
 package com.fccs.es_demo.search;
 
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.text.ParseException;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
@@ -15,7 +17,6 @@ import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.common.unit.TimeValue;
-import org.elasticsearch.index.query.FilterBuilders;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
@@ -33,12 +34,18 @@ public class SearchTest {
 	 */
 	@Test
 	public void smallestSearchTest() {
-		Client client = ClientTemplate.getInstance("127.0.0.1", 9300);
+		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
 		try {
 			ListenableActionFuture<SearchResponse> listenableActionFuture = client.prepareSearch().execute();
 			System.out.println(ReflectionToStringBuilder.toString(listenableActionFuture, ToStringStyle.JSON_STYLE));
 		} catch (Exception e) {
-			client = new TransportClient().addTransportAddress(new InetSocketTransportAddress("127.0.0.1", 9300));
+			try {
+				client = TransportClient.builder().build()
+				    	.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("host1"), 9300));
+			} catch (UnknownHostException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		SearchResponse response = client.prepareSearch().setFrom(0).setSize(20).setExplain(true).get();
 		SearchHits hits = response.getHits();
@@ -55,15 +62,16 @@ public class SearchTest {
 	 */
 	@Test
 	public void searchTest() throws ElasticsearchException, ParseException {
-		Client client = ClientTemplate.getInstance("127.0.0.1", 9300);
+		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
 		SearchResponse response = client.prepareSearch("missxu")
 			.setTypes("user")
 			.setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
-			.setQuery(QueryBuilders.fuzzyQuery("name", "xingming"))
+			.setQuery(QueryBuilders.matchQuery("name", "我的姓名"))
 			.addSort(SortBuilders.fieldSort("age").order(SortOrder.ASC))
 			.addSort(SortBuilders.fieldSort("birthday1").order(SortOrder.DESC))
-			.setPostFilter(FilterBuilders.andFilter(FilterBuilders.rangeFilter("age").from(6).to(8),
-					FilterBuilders.rangeFilter("birthday1").from("2015-09-12").to("2015-9-23")))
+			.setPostFilter(QueryBuilders.rangeQuery("age").from(4).to(7))
+					/*FilterBuilders.andFilter(FilterBuilders.rangeFilter("age").from(6).to(8),*/
+//					FilterBuilders.rangeFilter("birthday1").from("2015-09-12").to("2015-9-23")))
 			/*.setPostFilter(FilterBuilders.andFilter(FilterBuilders.rangeFilter("age").from(2).to(5),
 					FilterBuilders.rangeFilter("birthday").from(System.currentTimeMillis()+365*24*60*60*1000*2).to(System.currentTimeMillis()+365*24*60*60*1000*5)))*/
 			.setFrom(0).setSize(60).setExplain(true).get();
@@ -76,7 +84,7 @@ public class SearchTest {
 	
 	@Test
 	public void scrollSearchTest() {
-		Client client = ClientTemplate.getInstance("127.0.0.1", 9300);
+		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
 		QueryBuilder qb = QueryBuilders.matchPhraseQuery("name", "xingming");
 		SearchResponse scrollResp = client.prepareSearch("missxu")
 		        .setSearchType(SearchType.SCAN)
@@ -103,7 +111,7 @@ public class SearchTest {
 		 */
 		@Test
 		public void multiSearchTest() {
-			Client client = ClientTemplate.getInstance("127.0.0.1", 9300);
+			Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
 			SearchRequestBuilder srb1 = client.prepareSearch()
 					.setQuery(QueryBuilders.matchPhraseQuery("name", "姓名")).setFrom(0).setSize(9);
 			SearchRequestBuilder srb2 = client.prepareSearch()

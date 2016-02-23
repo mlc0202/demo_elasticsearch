@@ -110,7 +110,7 @@ public class MappingTest {
 	@Test
 	public void deleteMapping() throws IOException {
 		Client client = ClientTemplate.getClient();
-		client.admin().indices().prepareDeleteMapping("missxu3").setType("user3").execute().actionGet();
+		client.admin().indices().prepareDelete("user3","missxu3").execute().actionGet();
 		client.close();
 	}
 	

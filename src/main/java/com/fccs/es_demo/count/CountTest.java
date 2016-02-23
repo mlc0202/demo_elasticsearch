@@ -11,7 +11,7 @@ public class CountTest {
 
 	@Test
 	public void countTest() {
-		Client client = ClientTemplate.getInstance("127.0.0.1", 9300);
+		Client client = ClientTemplate.getInstance("139.129.48.57", 9300);
 		CountResponse response = client.prepareCount("missxu")
 					.setQuery(QueryBuilders.matchQuery("name", "姓名"))
 					.get();

@@ -1,5 +1,7 @@
 package com.fccs.es_qwzn.client;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.List;
 
 import org.elasticsearch.action.admin.indices.analyze.AnalyzeResponse;
@@ -14,9 +16,10 @@ import org.junit.Test;
 public class TransportClientTest {
 
 	@Test
-	public void getClient() {
+	public void getClient() throws UnknownHostException {
 		@SuppressWarnings("resource")
-		Client client = new TransportClient().addTransportAddress(new InetSocketTransportAddress("127.0.0.1", 9300));
+		Client client = TransportClient.builder().build()
+    	.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("host1"), 9300));
 		System.out.println(client);
 		client.close();
 	}
@@ -28,9 +31,10 @@ public class TransportClientTest {
 	 * ClusterAdminClient提供了对针对集群的action和operation的管理接口
 	 */
 	@Test
-	public void adminTest() {
+	public void adminTest() throws UnknownHostException {
 		@SuppressWarnings("resource")
-		Client client = new TransportClient().addTransportAddress(new InetSocketTransportAddress("127.0.0.1", 9300));
+		Client client = TransportClient.builder().build()
+    	.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("host1"), 9300));
 		System.out.println(client);
 		IndicesAdminClient indicesAdminClient = client.admin().indices();
 		ClusterAdminClient clusterAdminClient = client.admin().cluster();

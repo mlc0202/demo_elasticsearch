@@ -2,9 +2,9 @@ package com.fccs.es_qwzn.client;
 
 
 import java.lang.reflect.Constructor;
+import java.net.InetAddress;
 
 import org.elasticsearch.client.transport.TransportClient;
-import org.elasticsearch.common.settings.ImmutableSettings;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 
@@ -15,10 +15,10 @@ import org.elasticsearch.common.transport.InetSocketTransportAddress;
  */
 public class ClientTemplate {
 
-	private static final String host = "127.0.0.1";
+	private static final String host = "139.129.48.57";
 	private static final int port = 9300;
 	private static TransportClient client;
-	private static Settings settings = ImmutableSettings.settingsBuilder().put("client.transport.sniff", true).build();
+	private static Settings settings = Settings.settingsBuilder().put("client.transport.sniff", true).build();
 	
 	
 	static {
@@ -27,7 +27,7 @@ public class ClientTemplate {
 			Constructor<?> constructor = clazz.getDeclaredConstructor(Settings.class);
 			constructor.setAccessible(true);
 			client = (TransportClient) constructor.newInstance(settings);
-			client.addTransportAddress(new InetSocketTransportAddress(host, port));
+			client.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("host2"), port));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		

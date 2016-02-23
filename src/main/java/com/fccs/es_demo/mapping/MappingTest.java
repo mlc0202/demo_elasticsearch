@@ -16,24 +16,42 @@ public class MappingTest {
 	@Test
 	public void mappingTest() throws IOException {
 		Client client = ClientTemplate.getLocalInstance();
-		client.admin().indices().prepareCreate("mapping_test_index").execute().actionGet();
+		client.admin().indices().prepareCreate("missxu").execute().actionGet();
 		XContentBuilder mapping = XContentFactory.jsonBuilder()
 			.startObject()  
-	        	.startObject("mappingTestType")  
+	        	.startObject("user")
 		        	.startObject("properties")         
-			          .startObject("title").field("type", "string").field("store", "yes").endObject()    
-			          .startObject("description").field("type", "string").field("index", "not_analyzed").endObject()  
-			          .startObject("price").field("type", "double").endObject()  
-			          .startObject("onSale").field("type", "boolean").endObject()  
-			          .startObject("type").field("type", "integer").endObject()  
-			          .startObject("createDate").field("type", "date").endObject()                 
+			        	.startObject("title").field("type", "string").field("analyzer", "ik").endObject()    
+			            .startObject("description").field("type", "string").field("analyzer", "ik").endObject()  
+			            .startObject("price").field("type", "double").field("analyzer", "ik").endObject()  
+			            .startObject("onSale").field("type", "boolean").field("analyzer", "ik").endObject()  
+			            .startObject("type").field("type", "integer").field("analyzer", "ik").endObject()  
+			            .startObject("createDate").field("type", "date").field("analyzer", "ik").endObject()                  
 			        .endObject()  
-	       .endObject()  
+	          .endObject()  
 	     .endObject();
-		PutMappingRequest mappingRequest = Requests.putMappingRequest("mapping_test_index").type("mappingTestType").source(mapping);
+		PutMappingRequest mappingRequest = Requests.putMappingRequest("missxu").type("user").source(mapping);
 		client.admin().indices().putMapping(mappingRequest).actionGet();
 		
 	}
 	
+	@Test
+	public void mappingTest1() throws IOException {
+		Client client = ClientTemplate.getLocalInstance();
+		client.admin().indices().prepareCreate("missxu").execute().actionGet();
+		XContentBuilder mapping = XContentFactory.jsonBuilder()
+			.startObject()  
+	        	.startObject("user")
+		        	.startObject("properties")         
+			        	.startObject("name").field("type", "string").field("analyzer", "ik").endObject()    
+			            .startObject("age").field("type", "integer").field("analyzer", "ik").endObject()  
+			            .startObject("birthday1").field("type", "date").field("analyzer", "ik").endObject()                  
+			        .endObject()  
+	          .endObject()  
+	     .endObject();
+		PutMappingRequest mappingRequest = Requests.putMappingRequest("missxu").type("user").source(mapping);
+		client.admin().indices().putMapping(mappingRequest).actionGet();
+		
+	}
 	
 }
